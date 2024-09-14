@@ -1,0 +1,24 @@
+services:
+  web:
+    container_name: apetrov-487w-proj1-web
+    restart: no
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env.pseudo-prod.local #If we pretend to have a client, we pretend to have a production 😉
+    ports:
+      - 3000:3000
+    links:
+      - db
+  db:
+    image: postgres
+    container_name: apetrov-487w-proj1-db
+    restart: no
+    ports: 
+      - 5432:5432
+    volumes:
+      - apetrov-487w-proj1-db-data:/var/lib/postgresql/data
+    env_file: .env.pseudo-prod.local
+
+volumes:
+  apetrov-487w-proj1-db-data:

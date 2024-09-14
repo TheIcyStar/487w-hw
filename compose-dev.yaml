@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres
+    container_name: apetrov-487w-proj1-db
+    restart: no
+    ports: 
+      - 5432:5432
+    volumes:
+      - apetrov-487w-proj1-db-data:/var/lib/postgresql/data
+    env_file: .env
+
+volumes:
+  apetrov-487w-proj1-db-data:
