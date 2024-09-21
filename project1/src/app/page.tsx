@@ -8,8 +8,8 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+      <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
+        <div className="container flex items-center gap-10 py-16">
 
 
 
@@ -20,7 +20,11 @@ export default async function Home() {
               <input type="number" id="student-id" name="studentid"></input>
               <input type="submit" value="Send ID to log" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
             </form>
+          </div>
 
+          <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
+            <p className="text-xl font-bold">Sign In Logs</p>
+            
           </div>
 
         </div>

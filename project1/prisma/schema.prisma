@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
@@ -10,11 +7,24 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model User {
+    id        Int        @id
+    role      String
+    active    Boolean
+    swipes    SwipeLog[]
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
 
-    @@index([name])
+    @@map("users")
+}
+
+model SwipeLog {
+    id        Int      @id @default(autoincrement())
+    userId    Int
+    user      User     @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+
+
+    @@map("swipeLogs") 
+
 }
