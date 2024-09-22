@@ -3,6 +3,7 @@
 import { db } from "../server/db"
 import { api, HydrateClient } from "~/trpc/server";
 import { UserTable } from "./_components/usertable";
+import { SwipeTable } from "./_components/swipestable";
 
 export default async function Home() {
 
@@ -13,8 +14,6 @@ export default async function Home() {
     <HydrateClient>
       <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
         <div className="container flex items-center gap-10 py-16">
-
-
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
             <p className="text-xl font-bold">Manual SUN Lab sign in</p>
@@ -27,7 +26,7 @@ export default async function Home() {
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
             <p className="text-xl font-bold">Latest swipes</p>
-            
+            <SwipeTable LogList={swipes} ></SwipeTable>
           </div>
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
