@@ -1,5 +1,5 @@
 import { postRouter } from "~/server/api/routers/post";
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 /**
  * This is the primary router for your server.
@@ -8,6 +8,9 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   post: postRouter,
+  testy: publicProcedure.query(async () => {
+    return [10,20,30]; //left off: https://www.youtube.com/watch?v=qCLV0Iaq9zU, trpc usequery()?
+  })
 });
 
 // export type definition of API
