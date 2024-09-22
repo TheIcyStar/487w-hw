@@ -3,10 +3,9 @@ import type { Prisma } from '@prisma/client'
 function SwipeTableLine(SwipeEntry: Prisma.SwipeLogUncheckedCreateInput): JSX.Element{
     return (
         <tr>
-            <td>{SwipeEntry.id}</td>
+            {/* <td>{SwipeEntry.id}</td> */}
             <td>{SwipeEntry.userId}</td>
             <td>{SwipeEntry.createdAt?.toLocaleString()}</td>
-            <td>View</td>
         </tr>
     )
 }
@@ -22,10 +21,9 @@ export function SwipeTable({LogList}: {LogList: Prisma.SwipeLogUncheckedCreateIn
         <table>
             <tbody> {/* tbody needed for some reason https://github.com/vercel/next.js/discussions/36754 */}
                 <tr>
-                    <th>Swipe #</th>
+                    {/* <th>Swipe #</th> */}
                     <th>User ID</th>
                     <th>Timestamp</th>
-                    <th>Manage user</th>
                 </tr>
                 {userEntries}
             </tbody>

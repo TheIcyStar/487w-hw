@@ -12,17 +12,8 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
-        <div className="container flex items-center gap-10 py-16">
-
-          <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
-            <p className="text-xl font-bold">Manual SUN Lab sign in</p>
-            <form> {/* todo: submit url */}
-              <label htmlFor="student-id">Student ID: </label>
-              <input type="number" id="student-id" name="studentid"></input>
-              <input type="submit" value="Send ID to log" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
-            </form>
-          </div>
+      <main className="flex min-h-screen flex-col bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
+        <div className="container flex gap-10 px-10 py-16">
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
             <p className="text-xl font-bold">Latest swipes</p>
@@ -32,6 +23,43 @@ export default async function Home() {
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
             <p className="text-xl font-bold">User List</p>
             <UserTable LogList={users}></UserTable>
+          </div>
+
+          <div>
+            <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
+              <p className="text-xl font-bold">Manual SUN Lab sign in</p>
+              <form> {/* todo: submit url */}
+                <label htmlFor="student-id">Student ID: </label>
+                <input type="number" id="student-id" name="studentid"></input>
+
+                <input type="submit" value="Send ID to log" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
+              </form>
+            </div>
+
+            <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
+              <p className="text-xl font-bold">Add/update a user</p>
+              <form> {/* todo: submit url */}
+                <label htmlFor="student-id">Student ID: </label>
+                <input type="number" id="student-id" name="studentid"></input>
+
+                <div>
+                  <label htmlFor="role">Role: </label>
+                  <select id="role" name="role">
+                    <option value="Student">Student</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Janitor">Janitor</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="active">Active: </label>
+                  <input type="checkbox" id="active" name="active"></input>
+                </div>
+
+                <input type="submit" value="Send ID to log" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
+              </form>
+            </div>
           </div>
 
         </div>
