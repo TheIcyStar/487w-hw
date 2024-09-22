@@ -1,17 +1,34 @@
-type LogEntryType = {
-    id: number,
-    timestamp: any, //fixme
-    userType: "Student" | "Faculty" | "Staff" | "Janitor"
+import type { Prisma } from '@prisma/client'
 
+function UserTableLine(UserEntry: Prisma.UserUncheckedCreateInput): JSX.Element{
+    return (
+        <tr>
+            <td>{UserEntry.id}</td>
+            <td>{UserEntry.role}</td>
+            <td>{UserEntry.active ? "✅" : "🚫"}</td>
+            <td>View</td>
+        </tr>
+    )
 }
 
-export function UserTable({LogEntry}: {LogEntry:LogEntryType[]}): JSX.Element {
+export function UserTable({LogList}: {LogList: Prisma.UserUncheckedCreateInput[]}): JSX.Element {
+    const userEntries: JSX.Element[] = [] //TIL you can push to const arrays, makes sense tho
 
-
+    for(const user of LogList){
+        userEntries.push(UserTableLine(user))
+    }
 
     return (
-        <div>
-            
-        </div>
+        <table>
+            <tbody> {/* tbody needed for some reason https://github.com/vercel/next.js/discussions/36754 */}
+                <tr>
+                    <th>ID</th>
+                    <th>Role</th>
+                    <th>Active</th>
+                    <th>Swipes</th>
+                </tr>
+                {userEntries}
+            </tbody>
+        </table>
     )
 }

@@ -1,10 +1,13 @@
-import Link from "next/link";
+// import Link from "next/link";
 
+import { db } from "../server/db"
 import { api, HydrateClient } from "~/trpc/server";
+import { UserTable } from "./_components/usertable";
 
 export default async function Home() {
 
-  // void api.post.getLatest.prefetch();
+  const users = await db.user.findMany()
+  const swipes = await db.swipeLog.findMany()
 
   return (
     <HydrateClient>
@@ -23,8 +26,13 @@ export default async function Home() {
           </div>
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
-            <p className="text-xl font-bold">Sign In Logs</p>
+            <p className="text-xl font-bold">Latest swipes</p>
             
+          </div>
+
+          <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
+            <p className="text-xl font-bold">User List</p>
+            <UserTable LogList={users}></UserTable>
           </div>
 
         </div>
