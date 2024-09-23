@@ -1,4 +1,4 @@
-import { postRouter } from "~/server/api/routers/post";
+import { swipeRouter } from "./routers/users";
 import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 /**
@@ -7,7 +7,7 @@ import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  post: postRouter,
+  swipes: swipeRouter,
   testy: publicProcedure.query(async () => {
     return [10,20,30]; //left off: https://www.youtube.com/watch?v=qCLV0Iaq9zU, trpc usequery()?
   })

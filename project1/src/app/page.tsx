@@ -6,15 +6,19 @@ import { UserTable } from "./_components/usertable";
 import { SwipeTable } from "./_components/swipestable";
 import { Prisma } from "@prisma/client";
 
-export default function Home() {
+export default async function Home() {
   // const [dateFilter, setDateFilter] = React.useState<Date | undefined>()
   // const [userIdFilter, setUserIdFilter] = React.useState<number | undefined>()
   // const [timeRangeFilter, setTimeRangeFilter] = React.useState<{start: Date, end: Date} | undefined>()
 
-  // const users = await db.user.findMany()
-  // const swipes = await db.swipeLog.findMany()
+  //*
+  const users = await db.user.findMany()
+  const swipes = await db.swipeLog.findMany()
+  //*/
+  /*
   const swipes: Prisma.SwipeLogUncheckedCreateInput[] = []
   const users: Prisma.UserUncheckedCreateInput[] = []
+  //*/
 
   return (
     <HydrateClient>
