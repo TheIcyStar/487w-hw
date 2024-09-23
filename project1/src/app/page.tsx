@@ -1,14 +1,20 @@
-// import Link from "next/link";
 
+import React from "react";
 import { db } from "../server/db"
 import { api, HydrateClient } from "~/trpc/server";
 import { UserTable } from "./_components/usertable";
 import { SwipeTable } from "./_components/swipestable";
+import { Prisma } from "@prisma/client";
 
-export default async function Home() {
+export default function Home() {
+  // const [dateFilter, setDateFilter] = React.useState<Date | undefined>()
+  // const [userIdFilter, setUserIdFilter] = React.useState<number | undefined>()
+  // const [timeRangeFilter, setTimeRangeFilter] = React.useState<{start: Date, end: Date} | undefined>()
 
-  const users = await db.user.findMany()
-  const swipes = await db.swipeLog.findMany()
+  // const users = await db.user.findMany()
+  // const swipes = await db.swipeLog.findMany()
+  const swipes: Prisma.SwipeLogUncheckedCreateInput[] = []
+  const users: Prisma.UserUncheckedCreateInput[] = []
 
   return (
     <HydrateClient>
@@ -22,6 +28,7 @@ export default async function Home() {
 
           <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
             <p className="text-xl font-bold">User List</p>
+            <p>Filter Date</p>
             <UserTable LogList={users}></UserTable>
           </div>
 
@@ -36,7 +43,7 @@ export default async function Home() {
               </form>
             </div>
 
-            <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg ">
+            <div className="bg-sky-100 p-5 rounded-md drop-shadow-lg mt-5">
               <p className="text-xl font-bold">Add/update a user</p>
               <form> {/* todo: submit url */}
                 <label htmlFor="student-id">Student ID: </label>
@@ -54,10 +61,10 @@ export default async function Home() {
 
                 <div>
                   <label htmlFor="active">Active: </label>
-                  <input type="checkbox" id="active" name="active"></input>
+                  <input type="checkbox" id="active" name="active" checked></input>
                 </div>
 
-                <input type="submit" value="Send ID to log" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
+                <input type="submit" value="Apply" className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"></input>
               </form>
             </div>
           </div>
