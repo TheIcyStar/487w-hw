@@ -6,6 +6,8 @@ todo: write this
 
 ## Running the project
 todo: write this
+npx prisma studio
+npm run dev
 
 ## Tools used:
 Create T3 App (TS, Node, NextJS, Prisma)
