@@ -2,7 +2,7 @@ import type { Prisma } from '@prisma/client'
 
 function SwipeTableLine(SwipeEntry: Prisma.SwipeLogUncheckedCreateInput): JSX.Element{
     return (
-        <tr>
+        <tr key={SwipeEntry.id}>
             {/* <td>{SwipeEntry.id}</td> */}
             <td>{SwipeEntry.userId}</td>
             <td>{SwipeEntry.createdAt?.toLocaleString()}</td>
