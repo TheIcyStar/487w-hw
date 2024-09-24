@@ -11,7 +11,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: apetrov-487w-proj1-dbviewer
-    restart: always
+    restart: no
     ports:
       - "3001:80"
     environment:

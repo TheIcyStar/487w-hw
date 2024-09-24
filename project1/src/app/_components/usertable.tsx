@@ -2,7 +2,7 @@ import type { Prisma } from '@prisma/client'
 
 function UserTableLine(UserEntry: Prisma.UserUncheckedCreateInput): JSX.Element{
     return (
-        <tr>
+        <tr key={UserEntry.id}>
             <td>{UserEntry.id}</td>
             <td>{UserEntry.role}</td>
             <td>{UserEntry.active ? "✅" : "🚫"}</td>

@@ -1,4 +1,4 @@
-import { swipeRouter } from "./routers/users";
+import { swipeRouter } from "./routers/swipes";
 import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 /**
