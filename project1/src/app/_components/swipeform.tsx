@@ -5,9 +5,12 @@ import { api } from "~/trpc/react"
 
 export function SwipeForm(): JSX.Element {
     const utils = api.useUtils()
-    const [inputId, setInputId] = useState<number | undefined>()
+    const [inputId, setInputId] = useState<string>('')
     const createSwipe = api.swipes.create.useMutation({
-
+        onSuccess: async () => {
+            await utils.swipes.invalidate()
+            setInputId('');
+        }
     })
 
 
@@ -22,15 +25,22 @@ export function SwipeForm(): JSX.Element {
                 id="student-id"
                 name="studentid"
                 value={inputId}
-                onChange={(e) => setInputId(parseInt(e.target.value))}
+                onChange={(e) => setInputId(e.target.value)}
                 ></input>
 
                 <button
                     className="block bg-yellow-300 rounded-lg px-3 py-1 mt-3 hover:bg-yellow-500 hover:cursor-pointer"
                     type="submit"
-                    onClick={async () => {console.log("Yipee")}}
+                    disabled={createSwipe.isPending}
+                    onClick={async () => {
+                        if(inputId === ''){
+                            return
+                        }
+
+                        createSwipe.mutate({ userId: Number(inputId) })
+                    }}
                 >
-                    Send ID to log
+                    {createSwipe.isPending ? "Submitting..." : "Send ID to log"}
                 </button>
             </div>
         </div>
