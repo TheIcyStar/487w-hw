@@ -22,11 +22,11 @@ export function SwipeForm({ refetchCB }: {refetchCB: () => void}): JSX.Element {
             <div>
                 <label htmlFor="student-id">Student ID: </label>
                 <input
-                type="number"
-                id="student-id"
-                name="studentid"
-                value={inputId}
-                onChange={(e) => setInputId(e.target.value)}
+                    type="number"
+                    id="student-id"
+                    name="studentid"
+                    value={inputId}
+                    onChange={(e) => setInputId(e.target.value)}
                 ></input>
 
                 <button
