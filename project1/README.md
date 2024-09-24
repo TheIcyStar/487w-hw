@@ -7,6 +7,8 @@ The admin web interface also displays a list of card swipes, which can be filter
 
 Finally, the admin web interface allows to create new IDs or update existing ones. 
 
+**Visual media of code running is in the`/media` directory**
+
 #### High level requirements
 - The system must keep track of given IDs for card swipes, associate them with a timestamp, and store the record for 5 years.
 - An admin must be able to view the history of card swipes
