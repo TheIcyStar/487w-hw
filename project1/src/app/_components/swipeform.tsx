@@ -3,13 +3,14 @@
 import { useState } from "react"
 import { api } from "~/trpc/react"
 
-export function SwipeForm(): JSX.Element {
+export function SwipeForm({ refetchCB }: {refetchCB: () => void}): JSX.Element {
     const utils = api.useUtils()
     const [inputId, setInputId] = useState<string>('')
     const createSwipe = api.swipes.create.useMutation({
         onSuccess: async () => {
             await utils.swipes.invalidate()
-            setInputId('');
+            refetchCB()
+            setInputId('')
         }
     })
 

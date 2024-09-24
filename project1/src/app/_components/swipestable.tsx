@@ -10,11 +10,13 @@ function SwipeTableLine(SwipeEntry: Prisma.SwipeLogUncheckedCreateInput): JSX.El
     )
 }
 
-export function SwipeTable({LogList}: {LogList: Prisma.SwipeLogUncheckedCreateInput[]}): JSX.Element {
+export function SwipeTable({LogList}: {LogList: Prisma.SwipeLogUncheckedCreateInput[] | undefined}): JSX.Element {
     const userEntries: JSX.Element[] = []
 
-    for(const swipe of LogList){
-        userEntries.push(SwipeTableLine(swipe))
+    if(LogList){
+        for(const swipe of LogList){
+            userEntries.push(SwipeTableLine(swipe))
+        }
     }
 
     return (
