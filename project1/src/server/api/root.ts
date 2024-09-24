@@ -1,5 +1,6 @@
 import { swipeRouter } from "./routers/swipes";
-import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { userRouter } from "./routers/users";
 
 /**
  * This is the primary router for your server.
@@ -8,9 +9,7 @@ import { createCallerFactory, createTRPCRouter, publicProcedure } from "~/server
  */
 export const appRouter = createTRPCRouter({
   swipes: swipeRouter,
-  testy: publicProcedure.query(async () => {
-    return [10,20,30]; //left off: https://www.youtube.com/watch?v=qCLV0Iaq9zU, trpc usequery()?
-  })
+  users: userRouter
 });
 
 // export type definition of API
