@@ -20,9 +20,6 @@ export default function Home() {
   })
   const {data: users, refetch: refetchUsers } = api.users.getLatest.useQuery()
 
-  console.log(`start: ${startTimeFilter}\nend: ${endTimeFilter}`)
-
-
   return (
     <main className="flex min-h-screen flex-col bg-gradient-to-b from-[#053c5e] to-[#021927] font-sans text-black">
       <div className="container flex gap-10 px-10 py-16">
