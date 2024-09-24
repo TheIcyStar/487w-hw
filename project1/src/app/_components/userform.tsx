@@ -2,10 +2,12 @@
 
 import { api } from "~/trpc/react"
 
-export function UserForm(): JSX.Element {
+export function UserForm({ refetchCB }: {refetchCB: () => void}): JSX.Element {
+    const utils = api.useUtils()
     const upsertUser = api.users.upsert.useMutation({
-        onSuccess: () => {
-            console.log("User changed!")
+        onSuccess: async () => {
+            await utils.users.invalidate()
+            refetchCB()
         }
     })
 

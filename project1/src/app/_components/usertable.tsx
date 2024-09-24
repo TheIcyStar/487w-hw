@@ -11,11 +11,13 @@ function UserTableLine(UserEntry: Prisma.UserUncheckedCreateInput): JSX.Element{
     )
 }
 
-export function UserTable({LogList}: {LogList: Prisma.UserUncheckedCreateInput[]}): JSX.Element {
+export function UserTable({LogList}: {LogList: Prisma.UserUncheckedCreateInput[] | undefined}): JSX.Element {
     const userEntries: JSX.Element[] = [] //TIL you can push to const arrays, makes sense tho
 
-    for(const user of LogList){
-        userEntries.push(UserTableLine(user))
+    if(LogList){
+        for(const user of LogList){
+            userEntries.push(UserTableLine(user))
+        }
     }
 
     return (
