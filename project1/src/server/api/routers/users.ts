@@ -24,7 +24,7 @@ export const userRouter = createTRPCRouter({
         }),
 
     getLatest: publicProcedure
-        .query(async ({ ctx, input }) => {
+        .query(async ({ ctx }) => {
         const users = await ctx.db.user.findMany()
 
         return users ?? null
