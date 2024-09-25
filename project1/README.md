@@ -15,6 +15,34 @@ Finally, the admin web interface allows to create new IDs or update existing one
 - An admin must be able to optionally filter the swipe results by ID, date, and/or time range.
 - The system must assign metadata to registered IDs, such as the user type (student, faculty, staff, janitor), and if the ID is active.
 
+#### Database schema
+- Available in `prisma/schema.prisma`
+
+```
+model User {
+    id        Int        @id                //Contains the User ID
+    role      String                        //Student, faculty, etc
+    active    Boolean                       //Active or suspended ID
+    swipes    SwipeLog[]                    //Relation to swipe log
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+
+    @@map("users")
+}
+
+model SwipeLog {
+    id        Int      @id @default(autoincrement()) //Incremental id 
+    userId    Int                                    //UserID that swiped
+    user      User     @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+
+
+    @@map("swipeLogs") 
+
+}
+```
+
+
 <br>
 
 ## Configuring the project
