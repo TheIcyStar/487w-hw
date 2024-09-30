@@ -55,7 +55,7 @@ For development:
 
 `docker compose -f compose-dev.yaml up -d`, `npm run dev`. Connect to the app at http://localhost:3000
 
-Optionally, to view the database use `npx prisma 
+Optionally, to view the database use `npx prisma studio`
 
 For "production":
 
