@@ -3,3 +3,4 @@
 Please refer to each assignment's project folders.
 
 `project1`: SUN Lab access system
+`project2`: Maintenance Request Organization System
