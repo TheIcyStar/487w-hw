@@ -6,3 +6,42 @@ datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
+
+model User {
+    id          Int         @id @default(autoincrement())
+    name        String
+    phone       BigInt
+    email       String
+    checkIn     DateTime
+    checkOut    DateTime
+    apartment   Int
+    role        Role
+
+    @@map("users")
+}
+
+//for non tenants, check-in, check-out are set to epoch
+//and apartment is set to -1
+
+model Request {
+    id          Int         @id @default(autoincrement())
+    apartment   Int
+    area        String
+    description String
+    createdAt   DateTime    @default(now())
+    imageURI    String
+    status      Status      @default(PENDING)
+
+    @@map("requests")
+}
+
+enum Role {
+    TENANT
+    MAINTENANCE
+    MANAGEMENT
+}
+
+enum Status {
+    PENDING
+    COMPLETED
+}

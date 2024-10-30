@@ -12,7 +12,7 @@ Copy `.env.example` and rename it to `.env`. Change any values if necessary, but
 
 Install dependencies with `npm install`
 
-To seed the database with some example data, use `npm run db-seed`. [tsx](https://tsx.is/) must be on your system to run this.
+Set up the database with `npm run db:generate`, and seed it with example data with `npm run db-seed`. [tsx](https://tsx.is/) must be on your system to run db-seed.
 
 ## Running the project
 `docker compose up -d`, then `npm run dev`. Connect to the app at http://localhost:3000
