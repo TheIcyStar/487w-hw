@@ -1,3 +1,4 @@
+import Link from "next/link"
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <div className="bg-amber-700 text-gray-200 py-2">
-          <p className="text-4xl inline px-2">MROS</p>
+          <Link href="/" className="text-4xl inline px-2">MROS</Link>
           <p className="text-2xl font-light italic inline px-2">@ Campus Lows</p>
         </div>
         <TRPCReactProvider>{children}</TRPCReactProvider>
