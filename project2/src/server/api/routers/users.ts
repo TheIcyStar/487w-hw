@@ -31,7 +31,7 @@ export const usersRouter = createTRPCRouter({
             console.log("Created a user")
         }),
 
-    updateApartment: publicProcedure
+        updateApartment: publicProcedure
         .input(
             z.object({
                 userId: z.number(),
