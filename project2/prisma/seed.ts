@@ -17,7 +17,7 @@ async function main() {
         update: {}
     })
 
-    
+
     await db.user.upsert({
         where: { id: 2 },
         create: {
@@ -52,7 +52,7 @@ async function main() {
             apartment: 1,
             area: "shower",
             description: "shower so cold its spewing out snow",
-            imageURI: "",
+            imageURI: "https://upload.wikimedia.org/wikipedia/commons/2/22/Snowman_in_Indiana_2014.jpg",
             status: "PENDING"
 
         },

@@ -47,16 +47,24 @@ export const requestsRouter = createTRPCRouter({
     create: publicProcedure
         .input(
             z.object({
-                apartment: z.number(),
+                tenantId: z.number(),
                 area: z.string(),
                 description: z.string(),
                 imageURI: z.string()
             })
         )
-        .query(async ({ ctx, input }) => {
+        .mutation(async ({ ctx, input }) => {
+            const tenantInfo = await ctx.db.user.findFirst({
+                where: {id: input.tenantId}
+            })
+
+            if(!tenantInfo){
+                throw new Error(`Unable to find tenant id ${input.tenantId}`)
+            }
+
             await ctx.db.request.create({
                 data: {
-                    apartment: input.apartment,
+                    apartment: tenantInfo.apartment,
                     area: input.area,
                     description: input.description,
                     imageURI: input.imageURI

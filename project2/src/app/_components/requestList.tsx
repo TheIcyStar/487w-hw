@@ -2,12 +2,9 @@
 'use client'
 
 import React from "react"
-import { api } from "~/trpc/react"
 import type { Prisma } from '@prisma/client'
 
-function RequestListLine(item: Prisma.RequestUncheckedCreateInput){
-  const mutateRequestStatus = api.requests.setStatus.useMutation()
-
+function RequestListLine(item: Prisma.RequestUncheckedCreateInput, mutateRequest: (id: number, status: "PENDING" | "COMPLETED") => Promise<void>){
   return (
     <tr key={item.id}>
       <td>
@@ -19,9 +16,8 @@ function RequestListLine(item: Prisma.RequestUncheckedCreateInput){
             if(!item.id){ return }                                                        // Make the type
             if(e.target.value !== "PENDING" && e.target.value !== "COMPLETED") { return } // checker happy c:
 
-            await mutateRequestStatus.mutateAsync({id: item.id, status: e.target.value})
+            await mutateRequest(item.id, e.target.value)
             window.location.reload() //The wonderfully terrible solution to updating the requestlist with new information 🤠
-
           }}
         >
           <option value="PENDING">Pending</option>
@@ -38,12 +34,12 @@ function RequestListLine(item: Prisma.RequestUncheckedCreateInput){
   )
 }
 
-export default function RequestList({ requestList }: {requestList: Prisma.RequestUncheckedCreateInput[] | undefined}){
+export default function RequestList({ requestList, mutateRequest }: {requestList: Prisma.RequestUncheckedCreateInput[] | undefined, mutateRequest: (id: number, status: "PENDING" | "COMPLETED") => Promise<void>}){
   const entries: JSX.Element[] = []
 
   if(requestList){
     for(const request of requestList){
-      entries.push(RequestListLine(request))
+      entries.push(RequestListLine(request, mutateRequest))
     }
   }
 

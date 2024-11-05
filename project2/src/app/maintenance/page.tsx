@@ -14,7 +14,7 @@ export default function MaintenanceDashboard(){
 
   const mutateRequestStatus = api.requests.setStatus.useMutation()
 
-  const {data: requests, refetch: refetchRequests} = api.requests.list.useQuery({
+  const {data: requests} = api.requests.list.useQuery({
     apartment: apartmentFilter ? apartmentFilter : undefined,
     area: areaFilter ? areaFilter : undefined,
     startDateTime: startTimeFilter ? startTimeFilter : undefined,
@@ -22,13 +22,9 @@ export default function MaintenanceDashboard(){
     status: statusFilter ? statusFilter : undefined
   })
 
-  const setRequestStatus = (id: number, status: "PENDING" | "COMPLETED") => {
+  const setRequestStatus = async (id: number, status: "PENDING" | "COMPLETED") => {
     mutateRequestStatus.mutate({id: id, status: status})
   }
-
-
-
-  // console.log([apartmentFilter, areaFilter, statusFilter, startTimeFilter, endTimeFilter])
 
   return (
     <div>
@@ -97,7 +93,7 @@ export default function MaintenanceDashboard(){
       <br></br>
 
       <div>
-        <RequestList requestList={requests}></RequestList>
+        <RequestList requestList={requests} mutateRequest={setRequestStatus}></RequestList>
 
       </div>
     </div>
