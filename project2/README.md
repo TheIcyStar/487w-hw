@@ -1,9 +1,14 @@
 # 487w-Project2
 CMPSC 487w Project 2 - Maintenance Request Organization System
 
-(Description here later)
+A web-based maintenance request system for tenants, maintenance crew, and management. fulfilled functional requirements include:
+* Tenants are able to create maintenance requests with the area of the problem, a brief description, and an optional photo. The request ID, apartment number, and timestamp are automatically generated.
+* Maintenance staff are able to browse all request and filter them by apartment number, area, date range, and status.
+* Maintenance staff are able to update the status of a maintenance request
+* Management is able to add a new tenant, move them to another apartment, and delete tenant accounts.
+* Error checking features include the prevention of assigning multiple tenants to the same apartment
 
-**Visual media of code running is in the`/media` directory**
+Note that the system also keeps track of maintenance and management accounts, but has an assigned apartment of `-1` for "no apartment", which multiple accounts may be assigned to.
 
 <br>
 
